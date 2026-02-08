@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FMoIP – FM Radio over the Internet</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 560px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+    .card p:last-child { margin-bottom: 0; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>FMoIP</h1>
+    <p class="tagline">FM radio over the internet</p>
+    <div class="card">
+      <p>Discover and stream FM radio stations from around the world. Listen live, record streams or voice notes, and manage your favorites—all from your phone.</p>
+      <p>Available on <strong>Android</strong> and <strong>iOS</strong> via the app stores.</p>
+    </div>
+    <div class="card">
+      <p><a href="privacy-policy.html">Privacy Policy</a> – How we handle data (we don’t store your personal data) and third-party content.</p>
+    </div>
+  </main>
+  <footer>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </footer>
+</body>
+</html>

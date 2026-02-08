@@ -1,0 +1,114 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+Thumbs.db
+*.orig
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code (uncomment if you don't want to share workspace settings)
+# .vscode/
+
+# Cursor IDE (optional – uncomment to ignore)
+# .cursor/
+
+# Flutter / Dart
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+.packages
+/build/
+/coverage/
+*.symbols
+app.*.symbols
+app.*.map.json
+
+# Flutter iOS build id
+**/ios/Flutter/.last_build_id
+
+# Android – build outputs and local config
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/build/
+/android/app/build/
+/android/.gradle/
+/android/local.properties
+/android/captures/
+# gradlew and gradlew.bat are kept in repo for builds
+/android/gradle-wrapper.jar
+/android/**/GeneratedPluginRegistrant.java
+/android/.cxx/
+/android/key.properties
+/android/**/*.keystore
+/android/**/*.jks
+
+# iOS – build outputs and generated files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/**/xcuserdata/
+**/ios/**/.generated/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS – build and generated
+**/macos/Flutter/ephemeral/
+**/macos/Pods/
+**/macos/build/
+**/macos/**/xcuserdata/
+
+# Linux – build and ephemeral
+**/linux/flutter/ephemeral/
+**/linux/build/
+
+# Windows – build and ephemeral
+**/windows/flutter/ephemeral/
+**/windows/build/
+**/windows/x64/
+**/windows/x86/
+**/windows/*.suo
+**/windows/*.user
+**/windows/*.userosscache
+**/windows/*.sln.docstates
+
+# Web – build output
+**/web/build/
+
+# Xcode / iOS derived data and user state
+**/DerivedData/
+**/*.mode1v3
+**/*.mode2v3
+**/*.moved-aside
+**/*.pbxuser
+**/*.perspectivev3
+**/Icon?
+
+# Never commit keystores or signing keys
+*.keystore
+*.jks
+key.properties
