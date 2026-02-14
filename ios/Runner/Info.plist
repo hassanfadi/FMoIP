@@ -25,11 +25,18 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-1133915836610707~5473052322</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>FMoIP uses the local network to discover Cast-enabled devices on your WiFi network.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_CC1AD845._googlecast._tcp</string>
+		<string>_googlecast._tcp</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>FMoIP uses your location to select your country automatically.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>FMoIP needs microphone access to record radio audio.</string>
+	<string>FMoIP needs microphone access for voice notes and to capture audio when recording radio streams.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

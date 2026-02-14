@@ -1,0 +1,33 @@
+{
+  "identifier" : "FMoIP",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "FMOIP_PRO_001",
+      "localizations" : [
+        {
+          "description" : "Ad-free experience",
+          "displayName" : "FMoIP Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "fmoip_pro",
+      "referenceName" : "FMoIP Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
