@@ -200,6 +200,7 @@
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				9B64E35C80FD4EB8B95E7DC9 /* [CP] Embed Pods Frameworks */,
 				289B7413DC43BADE724E6597 /* [CP] Copy Pods Resources */,
+				E1A2B3C4D5E6F78901234567 /* Generate objective_c dSYM */,
 			);
 			buildRules = (
 			);
@@ -378,6 +379,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1A2B3C4D5E6F78901234567 /* Generate objective_c dSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate objective_c dSYM";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Generate dSYM for objective_c.framework (fixes App Store validation)\nOBJC_BINARY=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Frameworks/objective_c.framework/objective_c\"\nDSYM_DIR=\"${CONFIGURATION_BUILD_DIR}\"\nDSYM_OUT=\"$DSYM_DIR/objective_c.framework.dSYM\"\nif [ -f \"$OBJC_BINARY\" ]; then\n  dsymutil \"$OBJC_BINARY\" -o \"$DSYM_OUT\" 2>/dev/null || true\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

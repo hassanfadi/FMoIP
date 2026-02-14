@@ -24,6 +24,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1133915836610707~5473052322</string>
 	<key>NSLocalNetworkUsageDescription</key>
@@ -34,6 +36,8 @@
 		<string>_googlecast._tcp</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>FMoIP uses your location to select your country automatically.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>FMoIP uses your location to select your country automatically.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>FMoIP needs microphone access for voice notes and to capture audio when recording radio streams.</string>
