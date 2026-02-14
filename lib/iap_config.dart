@@ -1,10 +1,11 @@
 /// In-app purchase configuration.
 ///
-/// Create a subscription product in:
-/// - Google Play Console: Monetize → Products → Subscriptions
-/// - App Store Connect: Your app → Subscriptions
+/// Create the product in:
+/// - Android: Google Play Console → Monetize → Products → Subscriptions
+/// - iOS: App Store Connect → Your app → Subscriptions (or In-App Purchases)
 ///
-/// Use the same product ID on both platforms, or different IDs per platform.
+/// For iOS local testing: In Xcode, Edit Scheme → Run → Options →
+/// StoreKit Configuration → select ios/Runner/FMoIPProducts.storekit
 
 import 'dart:io';
 

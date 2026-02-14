@@ -11,8 +11,8 @@ void main() {
   const int size = 1024;
   final image = img.Image(width: size, height: size);
 
-  // Scale and center: use ~68% of canvas so adaptive icon crop doesn't cut off the radio
-  const double scale = 0.68;
+  // Scale and center: use ~51% of canvas (75% of previous 68%) so icon appears a bit smaller
+  const double scale = 0.68 * 0.75; // 0.51
   final int pad = ((1 - scale) * size / 2).round(); // ~163
 
   int s(int x) => (x * scale).round() + pad;

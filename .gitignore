@@ -74,9 +74,7 @@ app.*.map.json
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
-**/ios/Runner/GeneratedPluginRegistrant.*
-
-# macOS – build and generated
+**/ios/Runner/GeneratedPluginRegistrant.*# macOS – build and generated
 **/macos/Flutter/ephemeral/
 **/macos/Pods/
 **/macos/build/
@@ -97,9 +95,7 @@ app.*.map.json
 **/windows/*.sln.docstates
 
 # Web – build output
-**/web/build/
-
-# Xcode / iOS derived data and user state
+**/web/build/# Xcode / iOS derived data and user state
 **/DerivedData/
 **/*.mode1v3
 **/*.mode2v3
