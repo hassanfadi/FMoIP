@@ -80,6 +80,7 @@ flutter:
   assets:
     - assets/icons/radio_icon.png
     - assets/icons/radio_icon.drawio.png
+    - assets/icons/radio_icon_ios.png
     - assets/icons/lcd_radio_icon.png
     - assets/l10n/
 
@@ -87,6 +88,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: assets/icons/radio_icon.drawio.png
+  image_path_ios: assets/icons/radio_icon_ios.png
+  remove_alpha_ios: true
   adaptive_icon_background: "#1F2A44"
   adaptive_icon_foreground: assets/icons/radio_icon.drawio.png
   macos:
