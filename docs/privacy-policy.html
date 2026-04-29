@@ -58,8 +58,9 @@
     <p class="updated"><strong>Last updated:</strong> April 2026</p>
     <p>FMoIP ("the app") is a mobile application for discovering and streaming FM radio stations over the internet. This policy explains how we handle information in relation to the app.</p>
 
-    <h2>We do not store your personal data</h2>
-    <p><strong>We do not operate servers that collect or store your personal data.</strong> We do not have user accounts, and we do not gather names, emails, or other identifying information from you. Any data the app uses is either kept only on your device or is handled by third-party services under their own policies (see below).</p>
+    <h2>No first-party user database</h2>
+    <p><strong>We do not operate our own backend that stores user profiles for this app.</strong> We do not offer in-app FMoIP account creation, and we do not maintain our own user account database with names, emails, or similar identifiers.</p>
+    <p>Some data may still be transmitted off-device by platform providers or third-party SDKs used in the app (for example app store billing, ads, diagnostics, and analytics). That processing is described in this policy and is governed by those providers' terms and privacy policies.</p>
 
     <h2>Data on your device</h2>
     <p>The following are stored <strong>only on your device</strong> and are not sent to us or stored by us:</p>
@@ -72,7 +73,21 @@
     <p>We do not upload this data to our servers because we do not run servers that store customer data.</p>
 
     <h2>Location</h2>
-    <p>The app may use your device's approximate location to suggest a country for the station list (e.g. to show stations relevant to your region). This is used only on your device to choose a default country. We do not collect, store, or transmit your location to our own systems.</p>
+    <p>The app may use your device's approximate location to suggest a country for the station list (e.g. to show stations relevant to your region). We do not run our own servers for location storage. Depending on enabled services/SDKs, location-related signals may be processed by third parties as disclosed below.</p>
+
+    <h2>Google Play Data Safety disclosure</h2>
+    <p>For Android distribution, we disclose data handling in Google Play Data Safety based on app behavior and included SDKs. Data types that may be collected and/or shared include:</p>
+    <ul>
+      <li><strong>Approximate location:</strong> Used for app functionality (country suggestion) and may be used by third-party SDKs for ads/analytics where applicable.</li>
+      <li><strong>Purchase history:</strong> Subscription and purchase status handled by Google Play or Apple App Store billing systems.</li>
+      <li><strong>App interactions:</strong> Usage events may be processed for app functionality, analytics, and ad measurement.</li>
+      <li><strong>Crash logs:</strong> Crash and stability diagnostics may be processed by third-party services for app reliability.</li>
+      <li><strong>Device or other IDs:</strong> Device/app identifiers may be processed by third-party SDKs for analytics, fraud/security protection, and advertising functions.</li>
+    </ul>
+    <p>These data flows can include both <strong>collected</strong> (transmitted off-device for processing) and <strong>shared</strong> (transferred to third parties), depending on enabled features and SDK behavior.</p>
+
+    <h2>Encryption in transit</h2>
+    <p>Data transmitted off-device by the app and integrated services is intended to be sent over encrypted transport (such as HTTPS/TLS), subject to each third-party provider's implementation and policy.</p>
 
     <h2>Third-party services</h2>
     <p>The app uses services provided by others. Their use of data is governed by their own privacy and terms:</p>
@@ -81,6 +96,16 @@
       <li><strong>Advertising (Google AdMob):</strong> If you use the free version of the app, ads may be shown via Google AdMob. Google's advertising and privacy policies apply: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
       <li><strong>Radio station data:</strong> The app uses <strong>publicly available information</strong> (e.g. station names, stream URLs, countries) from public sources to list radio stations. We do not control or produce this data.</li>
     </ul>
+
+    <h2>User controls and choices</h2>
+    <ul>
+      <li><strong>Location:</strong> You can deny or revoke location permission in your device settings.</li>
+      <li><strong>Subscriptions:</strong> Purchases, renewals, and cancellations are controlled through your Apple or Google account settings.</li>
+      <li><strong>Ads and consent:</strong> Where available, ad/privacy choices are provided through consent prompts and platform controls.</li>
+    </ul>
+
+    <h2>Data retention and deletion</h2>
+    <p>Because we do not maintain a first-party user account backend for the app, we do not provide an account-based deletion portal. App data stored locally on your device can be removed by clearing app data or uninstalling the app. For data processed by third parties (such as app stores or advertising providers), retention and deletion are governed by those providers' policies and controls.</p>
 
     <h2>Radio station content – not our responsibility</h2>
     <p><strong>The app only helps you find and listen to streams from third-party radio stations.</strong> We do not create, host, or control the audio or any other content that those stations broadcast. All programming, music, talk, and any other content are the sole responsibility of the respective radio stations and their operators. We are not responsible for the nature, accuracy, or legality of what third-party stations broadcast. If you have concerns about specific content, please contact the station in question.</p>
