@@ -3,6 +3,18 @@
     "id": "2026-05-01-app-updates",
     "title": "FMoIP update available",
     "body": "New recordings actions menu, share recordings support, and improved station metadata behavior are now live.",
+    "titleI18n": {
+      "ar": "تحديث جديد لتطبيق FMoIP",
+      "es": "Nueva actualización de FMoIP disponible",
+      "ru": "Доступно обновление FMoIP",
+      "zh": "FMoIP 有新版本更新"
+    },
+    "bodyI18n": {
+      "ar": "أصبحت قائمة إجراءات التسجيلات الجديدة ودعم مشاركة التسجيلات وتحسين سلوك بيانات المحطات متاحة الآن.",
+      "es": "Ya están disponibles el nuevo menú de acciones de grabaciones, compartir grabaciones y mejoras en metadatos de emisoras.",
+      "ru": "Доступны новое меню действий для записей, отправка записей и улучшенное поведение метаданных станций.",
+      "zh": "录音操作菜单、录音分享功能和电台元数据交互改进现已上线。"
+    },
     "publishedAt": "2026-05-01T08:00:00Z",
     "expiresAt": "2026-12-31T23:59:59Z",
     "priority": "normal",
