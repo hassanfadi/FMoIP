@@ -17,7 +17,7 @@
     },
     "publishedAt": "2026-05-01T08:00:00Z",
     "expiresAt": "2026-12-31T23:59:59Z",
-    "priority": "normal",
+    "priority": "urgent",
     "popupOnOpen": true,
     "persistent": true,
     "platforms": ["all"],
