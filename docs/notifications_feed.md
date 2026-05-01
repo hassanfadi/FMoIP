@@ -32,6 +32,7 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
     "priority": "normal",
     "popupOnOpen": false,
     "persistent": false,
+    "platforms": ["all"],
     "url": "https://hassanfadi.github.io/FMoIP/"
   }
 ]
@@ -49,10 +50,13 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
 - `priority` (optional): one of `low`, `normal`, `high`, `urgent`.
 - `popupOnOpen` (optional): when `true`, app can show this as a popup on launch.
 - `persistent` (optional): when `true`, ignore does not permanently dismiss it.
+- `platforms` (optional): target platforms, e.g. `["android"]`, `["ios"]`, or `["all"]`.
 - `url` (optional): reserved for future deep-link behavior.
 
 If localization maps are missing for the current app language, the app falls back to
 the base `title` and `body`.
+
+If `platforms` is omitted, the notification is shown on all platforms.
 
 ## Publish flow
 
@@ -68,3 +72,10 @@ When `popupOnOpen` is `true`, the app can show a modal with 3 choices:
 - **Interact now**: marks as read and opens `url` (if provided).
 - **Remind later**: snoozes for a few hours.
 - **Ignore**: dismisses permanently unless `persistent` is `true`.
+
+## Reliability behavior
+
+- If feed fetch fails or parsing fails, the app does **not** crash.
+- Last successful feed is cached locally and used as fallback on next app start.
+- Invalid items are skipped individually (with debug logs), while valid items still show.
+- Failed refreshes are retried automatically with simple exponential backoff.
