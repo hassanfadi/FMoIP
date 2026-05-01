@@ -5,7 +5,9 @@
     "body": "New recordings actions menu, share recordings support, and improved station metadata behavior are now live.",
     "publishedAt": "2026-05-01T08:00:00Z",
     "expiresAt": "2026-12-31T23:59:59Z",
-    "important": false,
+    "priority": "normal",
+    "popupOnOpen": false,
+    "persistent": false,
     "url": "https://hassanfadi.github.io/FMoIP/"
   }
 ]
