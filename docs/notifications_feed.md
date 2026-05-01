@@ -33,6 +33,9 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
     "popupOnOpen": false,
     "persistent": false,
     "platforms": ["all"],
+    "versionTarget": {
+      "mode": "all"
+    },
     "url": "https://hassanfadi.github.io/FMoIP/"
   }
 ]
@@ -51,12 +54,23 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
 - `popupOnOpen` (optional): when `true`, app can show this as a popup on launch.
 - `persistent` (optional): when `true`, ignore does not permanently dismiss it.
 - `platforms` (optional): target platforms, e.g. `["android"]`, `["ios"]`, or `["all"]`.
+- `versionTarget` (optional): target app versions. If omitted, shown for all versions.
 - `url` (optional): reserved for future deep-link behavior.
 
 If localization maps are missing for the current app language, the app falls back to
 the base `title` and `body`.
 
 If `platforms` is omitted, the notification is shown on all platforms.
+
+### `versionTarget` modes
+
+Use semantic app versions with build number, e.g. `1.0.0+45`.
+
+- `{"mode":"all"}` → all app versions
+- `{"mode":"eq","version":"1.0.0+45"}` → only this exact version
+- `{"mode":"lt","version":"1.0.0+45"}` / `lte` → lower / lower-or-equal
+- `{"mode":"gt","version":"1.0.0+45"}` / `gte` → higher / higher-or-equal
+- `{"mode":"range","minVersion":"1.0.0+40","maxVersion":"1.0.0+45"}` → inclusive range
 
 ## Publish flow
 
