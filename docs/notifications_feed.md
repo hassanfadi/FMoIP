@@ -15,6 +15,18 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
     "id": "2026-05-01-app-updates",
     "title": "FMoIP update available",
     "body": "Message shown inside the app notifications panel.",
+    "titleI18n": {
+      "ar": "عنوان مترجم",
+      "es": "Titulo traducido",
+      "ru": "Переведенный заголовок",
+      "zh": "已翻译标题"
+    },
+    "bodyI18n": {
+      "ar": "رسالة مترجمة",
+      "es": "Mensaje traducido",
+      "ru": "Переведенное сообщение",
+      "zh": "已翻译内容"
+    },
     "publishedAt": "2026-05-01T08:00:00Z",
     "expiresAt": "2026-12-31T23:59:59Z",
     "priority": "normal",
@@ -30,12 +42,17 @@ Publish a JSON array sorted newest-first (the app also sorts by `publishedAt`):
 - `id` (required): stable unique id.
 - `title` (required): short headline.
 - `body` (required): message content shown to users.
+- `titleI18n` (optional): localized titles by language code (e.g. `ar`, `es`, `ru`, `zh`).
+- `bodyI18n` (optional): localized body text by language code.
 - `publishedAt` (required): ISO-8601 UTC timestamp.
 - `expiresAt` (optional): ISO-8601 UTC timestamp; once reached, the app hides that notification.
 - `priority` (optional): one of `low`, `normal`, `high`, `urgent`.
 - `popupOnOpen` (optional): when `true`, app can show this as a popup on launch.
 - `persistent` (optional): when `true`, ignore does not permanently dismiss it.
 - `url` (optional): reserved for future deep-link behavior.
+
+If localization maps are missing for the current app language, the app falls back to
+the base `title` and `body`.
 
 ## Publish flow
 
