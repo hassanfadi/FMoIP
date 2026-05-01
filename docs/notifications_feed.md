@@ -76,8 +76,9 @@ Use semantic app versions with build number, e.g. `1.0.0+45`.
 
 1. Edit `website/notifications.json`.
 2. Add a new object at the top with a unique `id`.
-3. Deploy website updates.
-4. Users see an unread-count badge on the bell icon after app refresh/open.
+3. Run `docs/safe_messaging_checklist.md` before publishing (policy, billing, links, and targeting checks).
+4. Deploy website updates.
+5. Users see an unread-count badge on the bell icon after app refresh/open.
 
 ## Popup behavior
 
