@@ -31,7 +31,8 @@
     "write": {
       "catalogSource": "fmoipMirror",
       "locale": "ar",
-      "country": "ES"
+      "country": "ES",
+      "lcdPanelColor": "cyan"
     }
   },
   {
