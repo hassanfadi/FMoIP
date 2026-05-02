@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-05-02-switch-to-fmoip-catalog",
+    "title": "Switch station catalog to FMoIP",
+    "body": "For better reliability, switch the station catalog from Radio Browser to the FMoIP mirror in Settings. Tap “Interact now” to apply automatically and review the setting.",
+    "titleI18n": {
+      "ar": "التبديل إلى كتالوج FMoIP",
+      "es": "Cambiar el catálogo a FMoIP",
+      "ru": "Переключите каталог на FMoIP",
+      "zh": "将电台目录切换为 FMoIP"
+    },
+    "bodyI18n": {
+      "ar": "للمزيد من الاستقرار، غيّر مصدر القائمة من Radio Browser إلى مرآة FMoIP في الإعدادات. اضغط «تفاعل الآن» للتطبيق تلقائيًا ومراجعة الإعداد.",
+      "es": "Para mayor fiabilidad, cambia el catálogo de Radio Browser al mirror FMoIP en Ajustes. Toca «Interactuar ahora» para aplicarlo y revisar la opción.",
+      "ru": "Для стабильности переключите каталог с Radio Browser на зеркало FMoIP в Настройках. Нажмите «Открыть сейчас», чтобы применить и проверить.",
+      "zh": "为提升稳定性，请在设置中将电台目录从 Radio Browser 切换为 FMoIP 镜像。点「立即查看」可自动应用并确认。"
+    },
+    "publishedAt": "2026-05-02T14:00:00Z",
+    "expiresAt": "2027-12-31T23:59:59Z",
+    "priority": "high",
+    "popupOnOpen": true,
+    "persistent": false,
+    "platforms": ["all"],
+    "versionTarget": { 
+      "mode": "gte",
+      "version":"1.0.0+49"
+    },
+    "action": "write",
+    "highlight": true,
+    "write": {
+      "catalogSource": "fmoipMirror"
+    }
+  },
+  {
     "id": "2026-05-01-app-updates",
     "title": "FMoIP update available",
     "body": "New recordings actions menu, share recordings support, and improved station metadata behavior are now live.",
