@@ -20,6 +20,7 @@
     "priority": "high",
     "popupOnOpen": true,
     "persistent": true,
+    "retention": "history",
     "platforms": ["all"],
     "versionTarget": { 
       "mode": "gte",
@@ -52,6 +53,7 @@
     "priority": "urgent",
     "popupOnOpen": false,
     "persistent": false,
+    "retention": "history",
     "platforms": ["all"],
     "versionTarget": {
       "mode": "lte",
