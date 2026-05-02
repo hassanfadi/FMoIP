@@ -80,7 +80,7 @@ The app treats notification behavior in two layers:
    | Field | Meaning |
    |--------|--------|
    | `action` | `"read"` (default) or `"write"`. **Read** = show UI only (scroll/highlight). **Write** = apply allowlisted settings, then optionally open Settings. |
-   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings and **outlines every Settings row** that corresponds to a key in **`write`** (until the user leaves Settings). Keys such as **`country`** that only affect the main browse UI do **not** get a Settings outline. The list scrolls so **`_focus`** (if set, and if that key maps to a Settings row) or the **topmost** outlined row is in view. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row only (no pref changes). |
+   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings and **outlines every Settings row** that corresponds to a key in **`write`** (until the user leaves Settings). Keys that live only on the **home** screen are outlined there instead: **`country`** (country field under the LCD) and **`favoritesOnlyMode`** (Stations / **Favorites** / Recordings tab strip — the **Favorites** segment). Those outlines stay until the user taps that control. The list scrolls so **`_focus`** (if set, and if that key maps to a Settings row) or the **topmost** outlined Settings row is in view. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row only (no pref changes). |
    | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** sets which row scrolls into view first among the outlined rows (writable key, e.g. `catalogSource`). If **`_focus`** is omitted or invalid, the **first outlined row** in top-to-bottom Settings order is scrolled into view. |
 
 Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
@@ -96,8 +96,8 @@ Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
 | `maxRecordingMinutes` | Integer minutes (clamped to app limits) |
 | `listPageSize` | One of `10`, `20`, `30`, `50`, `100`, `200`, `1000` |
 | `dataSaver` | `true` / `false` |
-| `favoritesOnlyMode` | `true` / `false` (main **Favorites-only** list mode; scroll falls back to language row if Settings has no tile) |
-| `country` | **Browse country**: ISO 3166-1 alpha-2 code (`FI`, `DE`, …). Must match a country in the app list. Applies via **[RadioState]** (home country picker); no Settings row, so it does not add a highlight outline there. |
+| `favoritesOnlyMode` | `true` / `false` (main **Favorites-only** list mode). Highlight: **Favorites** tab on the home tab strip. |
+| `country` | **Browse country**: ISO 3166-1 alpha-2 code (`FI`, `DE`, …). Must match a country in the app list. Applies via **[RadioState]**. Highlight: **Country** field under the LCD (not in Settings). |
 
 This is the **FMoIP notification protocol** in the feed: **external URLs for the web/store**, plus **`action` / `highlight` / `write`** for **trusted in-app behavior** (validated in code—do not add arbitrary keys without an app update).
 
