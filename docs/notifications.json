@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-05-02-switch-to-fmoip-catalog",
+    "id": "2026-05-02-switch-to-fmoip-catalog2",
     "title": "Switch station catalog to FMoIP",
     "body": "For better reliability, switch the station catalog from Radio Browser to the FMoIP mirror in Settings. Tap “Interact now” to apply automatically and review the setting.",
     "titleI18n": {
