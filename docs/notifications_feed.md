@@ -77,10 +77,28 @@ The app treats notification behavior in two layers:
    | Field | Meaning |
    |--------|--------|
    | `action` | `"read"` (default) or `"write"`. **Read** = show UI only (scroll/highlight). **Write** = apply allowlisted settings, then optionally open Settings. |
-   | `highlight` | `true` / `false`. For **`write`**, after applying changes, scrolls to the **Station catalog** row in Settings and can briefly emphasize it. For **`read`** with `highlight: true`, opens Settings and scrolls/highlights that row without changing prefs. |
-   | `write` | Object with **allowlisted** keys. Supported today: **`catalogSource`** → `"fmoipMirror"` or `"radioBrowser"` (variants like `fmoip` / `radio_browser` are accepted). |
+   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings, scrolls to a target row, and can briefly emphasize it. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row without changing prefs. |
+   | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** forces which Settings row to scroll to (must match a writable key, e.g. `catalogSource`). If **`_focus`** is omitted, the first matching key in a stable order is used. |
+
+Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
+
+| Key | Meaning / example values |
+|-----|--------------------------|
+| `catalogSource` | `fmoipMirror`, `radioBrowser` (aliases: `fmoip`, `radio`) |
+| `locale` | App language code: `en`, `ar`, `de`, … (must be a supported locale) |
+| `themeMode` | `system`, `light`, `dark` |
+| `textScale` | Number string; snapped to app presets (e.g. `1.0`, `1.15`) |
+| `lcdPanelColor` | `classic`, `amber`, `cyan`, `blue`, `purple`, `slate` |
+| `recordingQuality` | `low`, `medium`, `high` |
+| `recordingMode` | `withBackground`, `streamOnly` |
+| `maxRecordingMinutes` | Integer minutes (clamped to app limits) |
+| `listPageSize` | One of `10`, `20`, `30`, `50`, `100`, `200`, `1000` |
+| `dataSaver` | `true` / `false` |
+| `favoritesOnlyMode` | `true` / `false` (main **Favorites-only** list mode; scroll falls back to language row if Settings has no tile) |
 
 This is the **FMoIP notification protocol** in the feed: **external URLs for the web/store**, plus **`action` / `highlight` / `write`** for **trusted in-app behavior** (validated in code—do not add arbitrary keys without an app update).
+
+**Redundant `write` items:** For **`action: write`**, the app compares the **`write`** object (excluding **`_*`** meta keys) to the user’s **current** snapshot of those keys. If **every** supplied key **already matches**, the notification is **hidden** (no popup, bell row, or unread count). After the user changes a matching setting, the item disappears on the next frame. Until persisted settings have loaded (`settingsPrefsLoaded`), the snapshot may be incomplete and an item can appear briefly.
 
 **Examples**
 
