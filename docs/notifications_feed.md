@@ -101,6 +101,8 @@ Allowlisted **`write`** keys (same names as in code `NotificationsKvActions`):
 
 This is the **FMoIP notification protocol** in the feed: **external URLs for the web/store**, plus **`action` / `highlight` / `write`** for **trusted in-app behavior** (validated in code—do not add arbitrary keys without an app update).
 
+**Older app versions:** The feed may include **`write`** keys that an older build does not yet support. Those keys are **not applied** automatically. After **Interact**, the app shows a **localized** dialog (all supported UI languages) listing each unsupported **key** and the suggested **value** from the feed so the user can change the setting manually or update FMoIP.
+
 **Redundant `write` items:** For **`action: write`**, the app compares the **`write`** object (excluding **`_*`** meta keys) to the user’s **current** snapshot of those keys. If **every** supplied key **already matches**, the notification is **hidden** (no popup, bell row, or unread count)—including **`retention: history`** items once prefs match after **Interact** or other changes. Until persisted settings have loaded (`settingsPrefsLoaded`), the snapshot may be incomplete and an item can appear briefly.
 
 **Examples**
