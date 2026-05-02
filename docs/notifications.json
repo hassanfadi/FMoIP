@@ -19,7 +19,7 @@
     "expiresAt": "2027-12-31T23:59:59Z",
     "priority": "high",
     "popupOnOpen": true,
-    "persistent": false,
+    "persistent": true,
     "platforms": ["all"],
     "versionTarget": { 
       "mode": "gte",
