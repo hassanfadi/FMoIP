@@ -80,7 +80,7 @@ The app treats notification behavior in two layers:
    | Field | Meaning |
    |--------|--------|
    | `action` | `"read"` (default) or `"write"`. **Read** = show UI only (scroll/highlight). **Write** = apply allowlisted settings, then optionally open Settings. |
-   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings and **outlines every Settings row** that corresponds to a key in **`write`** (until the user leaves Settings). Keys that live only on the **home** screen are outlined there instead: **`country`** (country field under the LCD) and **`favoritesOnlyMode`** (Stations / **Favorites** / Recordings tab strip — the **Favorites** segment). Those outlines stay until the user taps that control. The list scrolls so **`_focus`** (if set, and if that key maps to a Settings row) or the **topmost** outlined Settings row is in view. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row only (no pref changes). |
+   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings and **outlines every Settings row** that corresponds to a key in **`write`** (until the user leaves Settings). Keys that live only on the **home** screen are outlined there instead: **`country`** (country field under the LCD) and **`favoritesOnlyMode`** (Stations / **Favorites** / Recordings tab strip — the **Favorites** segment). Those outlines stay until the user taps that control. The list scrolls so **`_focus`** (if set, and if that key maps to a Settings row) or the **topmost** outlined Settings row is in view. For **`read`** with `highlight: true`, uses the **same** outlining and scroll rules from **`write`** (no pref changes). If **`write`** is omitted or empty, falls back to highlighting the **Station catalog** row only. |
    | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** sets which row scrolls into view first among the outlined rows (writable key, e.g. `catalogSource`). If **`_focus`** is omitted or invalid, the **first outlined row** in top-to-bottom Settings order is scrolled into view. |
 
 Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
@@ -107,7 +107,7 @@ This is the **FMoIP notification protocol** in the feed: **external URLs for the
 
 - **Store link only:** set `url` to `https://…`; omit `action`/`write` or leave `action` as `read`.
 - **Switch catalog to FMoIP mirror:** omit `url` (or use only non-http links later); set `"action": "write"`, `"highlight": true`, `"write": { "catalogSource": "fmoipMirror" }`.
-- **Point users at Settings without changing prefs:** `"action": "read"`, `"highlight": true` (no `write` object).
+- **Point users at Settings without changing prefs:** `"action": "read"`, `"highlight": true`, and optional **`write`** listing only the keys to outline (values can be placeholders if unused); omit **`write`** or use `{}` to highlight **catalog** only.
 
 Future versions may add a custom scheme (e.g. `fmoip://settings/...`) parsed into the same handler; the feed fields above remain the source of truth for what ships today.
 
