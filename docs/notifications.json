@@ -29,7 +29,8 @@
     "action": "write",
     "highlight": true,
     "write": {
-      "catalogSource": "fmoipMirror"
+      "catalogSource": "fmoipMirror",
+      "locale": "ar"
     }
   },
   {
