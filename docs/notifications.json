@@ -30,7 +30,8 @@
     "highlight": true,
     "write": {
       "catalogSource": "fmoipMirror",
-      "locale": "ar"
+      "locale": "ar",
+      "country": "es"
     }
   },
   {
