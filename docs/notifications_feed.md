@@ -83,7 +83,7 @@ The app treats notification behavior in two layers:
    | `highlight` | `true` / `false`. Works for **both** **`read`** and **`write`**. When `true`, the app uses the **`write`** object (keys only for **`read`**—values are not applied) to decide **which rows to outline** on Settings and the home screen, and where to scroll first. **Home-only keys:** **`country`** (under the LCD) and **`favoritesOnlyMode`** (**Favorites** on the tab strip). Outlines on Settings last until the user leaves Settings; home outlines until the user taps that control. Scroll target: **`_focus`** if set and valid for a Settings row, else the **topmost** outlined Settings row. **`write` + `highlight: true`:** applies prefs, then opens Settings with that UI. **`read` + `highlight: true`:** same highlighting/scroll, **no** pref changes. If **`write`** is omitted or has no segment keys, **`read`** falls back to outlining the **Station catalog** row only. |
    | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** sets which row scrolls into view first among the outlined rows (writable key, e.g. `catalogSource`). If **`_focus`** is omitted or invalid, the **first outlined row** in top-to-bottom Settings order is scrolled into view. |
 
-Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
+Allowlisted **`write`** keys (same names as in code `NotificationsKvActions`):
 
 | Key | Meaning / example values |
 |-----|--------------------------|
