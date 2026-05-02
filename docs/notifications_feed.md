@@ -23,6 +23,7 @@ Publish a JSON array (the app sorts by `publishedAt`, newest first):
     "priority": "high",
     "popupOnOpen": true,
     "persistent": false,
+    "retention": "ephemeral",
     "platforms": ["all"],
     "versionTarget": { "mode": "all" },
     "action": "write",
@@ -40,6 +41,7 @@ Publish a JSON array (the app sorts by `publishedAt`, newest first):
     "priority": "normal",
     "popupOnOpen": false,
     "persistent": false,
+    "retention": "history",
     "platforms": ["all"],
     "versionTarget": { "mode": "lt", "version": "1.0.0+45" },
     "url": "https://play.google.com/store/apps/details?id=com.fmoip.app"
@@ -59,6 +61,7 @@ Publish a JSON array (the app sorts by `publishedAt`, newest first):
 - `priority` (optional): one of `low`, `normal`, `high`, `urgent`.
 - `popupOnOpen` (optional): when `true`, the app can show this item as a modal on launch (see [Popup behavior](#popup-behavior)).
 - `persistent` (optional): when `true`, ignore does not permanently dismiss it.
+- `retention` (optional): **`ephemeral`** or **`history`** (default **`history`**). **Ephemeral** items are removed from the bell list after the user **taps the row** (after the action runs) or taps **Interact now** on the startup popup—good for one-off prompts. **History** items stay in the list until the user dismisses them with the **X** control, chooses **Ignore** on the popup (when allowed), or the item leaves the feed via **`expiresAt`**. **`persistent: true`** still hides the dismiss actions as before.
 - `platforms` (optional): target platforms, e.g. `["android"]`, `["ios"]`, or `["all"]`.
 - `versionTarget` (optional): target app versions. If omitted, shown for all versions.
 
@@ -77,7 +80,7 @@ The app treats notification behavior in two layers:
    | Field | Meaning |
    |--------|--------|
    | `action` | `"read"` (default) or `"write"`. **Read** = show UI only (scroll/highlight). **Write** = apply allowlisted settings, then optionally open Settings. |
-   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings, scrolls to a target row, and can briefly emphasize it. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row without changing prefs. |
+   | `highlight` | `true` / `false`. For **`write`**, after applying changes, opens Settings, scrolls to a target row, and **outlines** it until the user leaves Settings. For **`read`** with `highlight: true`, opens Settings on the **Station catalog** row with the same outline behavior (no pref changes). |
    | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** forces which Settings row to scroll to (must match a writable key, e.g. `catalogSource`). If **`_focus`** is omitted, the first matching key in a stable order is used. |
 
 Allowlisted **`write`** keys (same names as in code `NotificationWriteKeys`):
