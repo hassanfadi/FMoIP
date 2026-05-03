@@ -19,7 +19,8 @@
     "action": "read",
     "highlight": true,
     "kv": {
-      "catalogSource": "fmoipMirror"
+      "catalogSource": "fmoipMirror",
+      "locale": "ar"
     }
   },
   {
