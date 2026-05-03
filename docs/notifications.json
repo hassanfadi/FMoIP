@@ -1,5 +1,28 @@
 [
   {
+    "id": "2026-05-02-catalog-example",
+    "title": "Switch station catalog to FMoIP",
+    "body": "Tap Interact now to apply the FMoIP catalog and review Settings.",
+    "titleI18n": { "ar": "…", "es": "…", "ru": "…", "zh": "…" },
+    "bodyI18n": { "ar": "…", "es": "…", "ru": "…", "zh": "…" },
+    "publishedAt": "2026-05-02T14:00:00Z",
+    "expiresAt": "2027-12-31T23:59:59Z",
+    "priority": "high",
+    "popupOnOpen": true,
+    "persistent": false,
+    "retention": "ephemeral",
+    "platforms": ["all"],
+    "versionTarget": {
+      "mode": "gte",
+      "version":"1.0.0+49"
+    },
+    "action": "read",
+    "highlight": true,
+    "kv": {
+      "catalogSource": "fmoipMirror"
+    }
+  },
+  {
     "id": "2026-05-01-app-updates",
     "title": "FMoIP update available",
     "body": "New recordings actions menu, share recordings support, and improved station metadata behavior are now live.",
