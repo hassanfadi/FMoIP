@@ -28,7 +28,7 @@ Publish a JSON array (the app sorts by `publishedAt`, newest first):
     "versionTarget": { "mode": "all" },
     "action": "write",
     "highlight": true,
-    "write": {
+    "kv": {
       "catalogSource": "fmoipMirror"
     }
   },
@@ -73,17 +73,17 @@ If `platforms` is omitted, the notification is shown on all platforms.
 
 The app treats notification behavior in two layers:
 
-1. **External link (`url`)** — If `url` is present and uses **`http` or `https`**, **Interact now** (and tapping a row in the notifications sheet) opens that URL in an **external** browser/app. Typical uses: Play Store, privacy page, your website. In this case, **in-app `action` / `write` fields are not run** for that interaction (the external URL wins first).
+1. **External link (`url`)** — If `url` is present and uses **`http` or `https`**, **Interact now** (and tapping a row in the notifications sheet) opens that URL in an **external** browser/app. Typical uses: Play Store, privacy page, your website. In this case, **in-app `action` / `kv` (or legacy `write`)** are not run for that interaction (the external URL wins first).
 
 2. **In-app FMoIP actions** — Controlled by JSON fields on the same item (no separate `fmoip://` URI is required today):
 
    | Field | Meaning |
    |--------|--------|
    | `action` | `"read"` (default) or `"write"`. **Read** = show UI only (scroll/highlight). **Write** = apply allowlisted settings, then optionally open Settings. |
-   | `highlight` | `true` / `false`. Works for **both** **`read`** and **`write`**. When `true`, the app uses the **`write`** object (keys only for **`read`**—values are not applied) to decide **which rows to outline** on Settings and the home screen, and where to scroll first. **Home-only keys:** **`country`** (under the LCD) and **`favoritesOnlyMode`** (**Favorites** on the tab strip). Outlines on Settings last until the user leaves Settings; home outlines until the user taps that control. Scroll target: **`_focus`** if set and valid for a Settings row, else the **topmost** outlined Settings row. **`write` + `highlight: true`:** applies prefs, then opens Settings with that UI. **`read` + `highlight: true`:** same highlighting/scroll, **no** pref changes. If **`write`** is omitted or has no segment keys, **`read`** falls back to outlining the **Station catalog** row only. |
-   | `write` | Object with **allowlisted** keys (see below). Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** sets which row scrolls into view first among the outlined rows (writable key, e.g. `catalogSource`). If **`_focus`** is omitted or invalid, the **first outlined row** in top-to-bottom Settings order is scrolled into view. |
+   | `highlight` | `true` / `false`. Works for **both** **`read`** and **`write`**. When `true`, the app uses the **`kv`** object (keys only for **`read`**—values are not applied) to decide **which rows to outline** on Settings and the home screen, and where to scroll first. **Home-only keys:** **`country`** (under the LCD) and **`favoritesOnlyMode`** (**Favorites** on the tab strip). Outlines on Settings last until the user leaves Settings; home outlines until the user taps that control. Scroll target: **`_focus`** if set and valid for a Settings row, else the **topmost** outlined Settings row. **`write` action + `highlight: true`:** applies prefs from **`kv`**, then opens Settings with that UI. **`read` + `highlight: true`:** same highlighting/scroll, **no** pref changes. If **`kv`** is omitted or has no segment keys, **`read`** falls back to outlining the **Station catalog** row only. |
+   | `kv` | Key–value object with **allowlisted** keys (see below). The name **`kv`** reflects that the map is used for both **read** (highlight / scroll) and **write** (apply prefs)—not only “writing” to disk. Values are strings (booleans like `true`/`false`, numbers as digits, enums by name). Keys starting with **`_`** are **meta** (not prefs): **`_restart`** (`true`/`1`/`yes`) restarts the app after a successful apply; **`_focus`** sets which row scrolls into view first among the outlined rows (key name, e.g. `catalogSource`). If **`_focus`** is omitted or invalid, the **first outlined row** in top-to-bottom Settings order is scrolled into view. **Legacy:** the same object may be sent under **`write`**; the app reads **`kv`** when that JSON key is present (even if `{}`), otherwise **`write`**. |
 
-Allowlisted **`write`** keys (same names as in code `NotificationsKvActions`):
+Allowlisted **`kv`** keys (same names as in code `NotificationsKvActions`):
 
 | Key | Meaning / example values |
 |-----|--------------------------|
@@ -99,17 +99,17 @@ Allowlisted **`write`** keys (same names as in code `NotificationsKvActions`):
 | `favoritesOnlyMode` | `true` / `false` (main **Favorites-only** list mode). Highlight: **Favorites** tab on the home tab strip. |
 | `country` | **Browse country**: ISO 3166-1 alpha-2 code (`FI`, `DE`, …). Must match a country in the app list. Applies via **[RadioState]**. Highlight: **Country** field under the LCD (not in Settings). |
 
-This is the **FMoIP notification protocol** in the feed: **external URLs for the web/store**, plus **`action` / `highlight` / `write`** for **trusted in-app behavior** (validated in code—do not add arbitrary keys without an app update).
+This is the **FMoIP notification protocol** in the feed: **external URLs for the web/store**, plus **`action` / `highlight` / `kv`** for **trusted in-app behavior** (validated in code—do not add arbitrary keys without an app update).
 
-**Older app versions:** The feed may include **`write`** keys that an older build does not yet support. Those keys are **not applied** automatically. After **Interact**, the app shows a **localized** dialog (all supported UI languages) listing each unsupported **key** and the suggested **value** from the feed so the user can change the setting manually or update FMoIP.
+**Older app versions:** The feed may include **`kv`** keys that an older build does not yet support. Those keys are **not applied** automatically. After **Interact**, the app shows a **localized** dialog (all supported UI languages) listing each unsupported **key** and the suggested **value** from the feed so the user can change the setting manually or update FMoIP.
 
-**Redundant `write` items:** For **`action: write`**, the app compares the **`write`** object (excluding **`_*`** meta keys) to the user’s **current** snapshot of those keys. If **every** supplied key **already matches**, the notification is **hidden** (no popup, bell row, or unread count)—including **`retention: history`** items once prefs match after **Interact** or other changes. Until persisted settings have loaded (`settingsPrefsLoaded`), the snapshot may be incomplete and an item can appear briefly.
+**Redundant `write` actions:** For **`action: write`**, the app compares the **`kv`** object (excluding **`_*`** meta keys) to the user’s **current** snapshot of those keys. If **every** supplied key **already matches**, the notification is **hidden** (no popup, bell row, or unread count)—including **`retention: history`** items once prefs match after **Interact** or other changes. Until persisted settings have loaded (`settingsPrefsLoaded`), the snapshot may be incomplete and an item can appear briefly.
 
 **Examples**
 
-- **Store link only:** set `url` to `https://…`; omit `action`/`write` or leave `action` as `read`.
-- **Switch catalog to FMoIP mirror:** omit `url` (or use only non-http links later); set `"action": "write"`, `"highlight": true`, `"write": { "catalogSource": "fmoipMirror" }`.
-- **Point users at Settings without changing prefs:** `"action": "read"`, `"highlight": true`, and optional **`write`** listing only the keys to outline (values can be placeholders if unused); omit **`write`** or use `{}` to highlight **catalog** only.
+- **Store link only:** set `url` to `https://…`; omit `action`/`kv` or leave `action` as `read`.
+- **Switch catalog to FMoIP mirror:** omit `url` (or use only non-http links later); set `"action": "write"`, `"highlight": true`, `"kv": { "catalogSource": "fmoipMirror" }` (legacy: same object under `"write"` if **`kv`** is omitted).
+- **Point users at Settings without changing prefs:** `"action": "read"`, `"highlight": true`, and optional **`kv`** listing only the keys to outline (values can be placeholders if unused); omit **`kv`** or use `"kv": {}` to highlight **catalog** only.
 
 Future versions may add a custom scheme (e.g. `fmoip://settings/...`) parsed into the same handler; the feed fields above remain the source of truth for what ships today.
 
@@ -135,7 +135,7 @@ Use semantic app versions with build number, e.g. `1.0.0+45`.
 
 When `popupOnOpen` is `true`, the app can show a modal with three choices:
 
-- **Interact now**: marks as read, then runs the [FMoIP notification protocol](#url-and-the-fmoip-notification-protocol): opens **`http`/`https` `url`** externally if present; otherwise applies **`write`** and/or opens **Settings** for **`read`**/**`write`** as configured.
+- **Interact now**: marks as read, then runs the [FMoIP notification protocol](#url-and-the-fmoip-notification-protocol): opens **`http`/`https` `url`** externally if present; otherwise applies **`kv`** (when **`action`** is **`write`**) and/or opens **Settings** for **`read`**/**`write`** as configured.
 - **Remind later**: snoozes for a few hours.
 - **Ignore**: dismisses permanently unless `persistent` is `true`.
 
