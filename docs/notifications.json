@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-05-02-catalog-example11",
+    "id": "2026-05-02-catalog-example",
     "title": "Switch station catalog to FMoIP",
     "body": "Tap Interact now to apply the FMoIP catalog and review Settings.",
     "titleI18n": { "ar": "…", "es": "…", "ru": "…", "zh": "…" },
@@ -9,8 +9,8 @@
     "expiresAt": "2027-12-31T23:59:59Z",
     "priority": "high",
     "popupOnOpen": true,
-    "persistent": false,
-    "retention": "ephemeral",
+    "persistent": true,
+    "retention": "history",
     "platforms": ["all"],
     "versionTarget": {
       "mode": "gte",
